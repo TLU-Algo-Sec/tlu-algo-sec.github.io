@@ -1,8 +1,9 @@
 ---
 layout: post
 title:  "Writeup BTCTF"
-tags: [writeup,forensics,python,crypto,web,]
-authors: [3]
+tags: [writeup,forensics,python,crypto,web]
+authors: [4]
+image: https://ctftime.org/media/team/bt_code_club_pfp_2.png
 ---
 
 ## 1. Scrambled 
