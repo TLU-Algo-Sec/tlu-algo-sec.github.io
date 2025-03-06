@@ -6,23 +6,20 @@ authors: [7]
 image: ../assets/Nokia/NB1.jpg
 ---
 
-Xin chào mọi người, chắc mọi người đọc writeup CTF nhiều rồi, nay thì mình đổi gió cái nhỉ :D
+Chắc mọi người đọc writeup CTF nhiều rồi, nay thì mình đổi gió cái nhỉ :D
 
 Trong bài này chúng ta sẽ nói về hành trình bringup của mình với chiếc Nokia 8 để nó có thể chạy được Android 15 (LineageOS 22.1) và chúng ta sẽ nói về AOSP, hay còn gọi là Android Open Source Project, và Nokia.
 
-Note thêm: Đây là con máy có setup **cursed** nhất trong tất cả các thiết bị sử dụng Snapdragon 835 (msm8998) chạy LineageOS.
-
 ## Long story short về HMD Global
-
-HMD không trực tiếp sản xuất những chiếc Nokia, các sản phẩm của HMD đều là những thiết bị [ODM](https://nuumobile.com/android-oems-vs-odms-5-things-you-should-know/#:~:text=ODM%20stands%20for%20%E2%80%9Coriginal%20design,as%20%E2%80%9Cwhite%2Dlabelling%E2%80%9D.). Có thể kể đến các ODM nổi tiếng đã sản xuất thiết bị cho Nokia là FIH (subcompany của Foxconn), Huaqin hay Longcheer, và 1 vài ODM nữa mà mình không tiện kể, nhưng bạn có thể đọc ở trên [HMD Global Wiki](https://hmd.fandom.com/wiki/HMD_Global).
+HMD không trực tiếp sản xuất những chiếc Nokia, các sản phẩm của HMD đều là những thiết bị [ODM](https://nuumobile.com/android-oems-vs-odms-5-things-you-should-know/#:~:text=ODM%20stands%20for%20%E2%80%9Coriginal%20design,as%20%E2%80%9Cwhite%2Dlabelling%E2%80%9D.). Có thể kể đến các ODM nổi tiếng đã sản xuất thiết bị cho Nokia là [FIH](https://www.fihmobile.com/en/index.php) (subcompany của Foxconn), [Huaqin](https://en.huaqin.com/) hay [Longcheer](https://www.longcheer.com/), và 1 vài ODM nữa mà mình không tiện kể, nhưng bạn có thể đọc ở trên [HMD Global Wiki](https://hmd.fandom.com/wiki/HMD_Global).
 
 Từ sau chiếc Nokia 8, doanh số HMD lao dốc hẳn. Chiếc máy này được ra mắt vào năm 2017, là một budget flagship đầu tiên của HMD sau khi mua được Nokia, và cũng là chiếc flagship bán chạy nhất của HMD. Sau 2017 thì có 2 flagship được ra mắt là chiếc Nokia 8 Sirocco nhưng doanh số cũng chả an thua mấy vì cấu hình vừa cùi lại còn giá cao nữa, hay nếu bạn biết đến con Nokia có thể trigger chứng sợ lỗ của bạn (nó cũng flop luôn, kiểu mỗi năm HMD experiment 1 thứ):
 
 ![AOP_sprout](../assets/Nokia/AOP_sprout.jpg)
 
-Nokia 9 PureView ra mắt vào 2019, sử dụng Qualcomm Snapdragon 845 - thực ra cũng không tệ vào thời điểm đó, nhưng vấn đề là HMD bắt nó gánh 5 con cảm biến 12MP và 1 cảm biến ToF (2x RGB, 3x native B/W và 1x ToF) - 6 nếu bạn tính cả cái front camera (20MP) của nó nữa, thứ mà đến giờ Xiaomi còn chưa nghĩ tới được =)))))
+Nokia 9 PureView ra mắt vào 2019, sử dụng Qualcomm Snapdragon 845 - thực ra cũng không tệ vào thời điểm đó, nhưng vấn đề là HMD bắt nó gánh 5 con cảm biến 12MP và 1 cảm biến ToF (2x RGB, 3x native B/W và 1x ToF) - 7 sensors tất cả nếu bạn tính cả cái front camera (20MP) của nó nữa, thứ mà đến giờ Xiaomi còn chưa nghĩ tới được =)))))
 
-7 camera sensors trên một chiếc điện thoại, madness.
+7 camera sensors trên một chiếc điện thoại, madness. Thế quái nào nó vẫn win giải [Good Design Award](https://www.good-designawards.com/award-details.html?award=34762) =)))))
 
 Thực ra thì cam B/W của nó mang lại các file DNG có chất lượng thực sự tốt. Nhưng chiếc 9 PureView này còn các vấn đề liên quan đến cảm biến vân tay rất chậm, hiệu năng, thời lượng pin, và image processing - nếu bạn mang đi chụp người yêu thì mình nghĩ là người yêu bạn sẽ chia tay trước khi mà chiếc máy này xử lý xong bức ảnh đấy vì nó xử lý hình ảnh rất lâu :D
 
@@ -32,7 +29,7 @@ Source: [HMD Global backs out of Nokia 9 PureView Android 11 upgrade, blames cam
 
 Thực ra thì cái camera system chả liên quan gì đến hiệu năng của nó cả =)))) biết cách tối ưu thì ngon, chả qua là FIH không muốn.
 
-Nói đến đây thì chắc bạn cũng hiểu những chiếc Nokia có software tệ thế nào, mặc dù thiết bị của họ mang tiếng chạy Android One hoặc các phiên bản nội địa thì chạy hệ điều hành gần ngang với AOSP.
+Nói đến đây thì chắc bạn cũng hiểu những chiếc Nokia có software tệ thế nào, mặc dù thiết bị của họ mang tiếng chạy Android One "thuần Google" hoặc các phiên bản nội địa Trung Quốc thì chuẩn là AOSP rebrand luôn.
 
 Không phải tự dưng người ta muốn custom ROM để giải quyết những vấn đề đó cho những chiếc điện thoại Nokia.
 
@@ -80,7 +77,7 @@ và...
 
 ![alt text](../assets/Nokia/TripleColorCompany.png)
 
-Source: [Nokia8 ROM Installation Guide V2.0.pdf](https://t.me/HMD_Nokia_8/68949), trang cuối.
+Nếu bạn tò mò về bức ảnh kháy HMD ở trên lấy đâu ra thì mình sẽ để link ở đây: [Nokia8 ROM Installation Guide V2.0.pdf](https://t.me/HMD_Nokia_8/68949), trang cuối.
 
 ## Custom ROM/firmware là gì?
 Custom ROM/firmware là một phiên bản phần mềm tuỳ chỉnh của OS được tạo bởi một bên thứ 3, hoặc một cộng đồng, và thường được tạo ra nhằm mục đích cải thiện hiệu năng, hoặc mang thêm các tính năng mới cho thiết bị - trong trường hợp của HMD thì là cả 2 =)))))
@@ -118,7 +115,7 @@ Organization này được mình tạo ra với mục đích mang đến những
 | Device                   | Codename | ODM codename/actual codename          | ODM             | Supported?              |
 |:------------------------ |:-------- | :------------------------------------ |:--------------- |:----------------------  |
 | Nokia 8                  | `NB1`    | Bang                                  | FIH Mobile      | Yes, officially.        |
-| Nokia 8 Sirocco          | `A1N`    | Avenger                               | FIH Mobile      | Not yet.                |
+| Nokia 8 Sirocco          | `A1N`    | Avenger                               | FIH Mobile      | Planned.                |
 
 Với những thiết bị chạy Android One, thì codename thật của nó sẽ là `codename` + `_sprout`, vì đây là truyền thống codename của các thiết bị Android One rồi, nhưng theo quy luật đặt tên của LineageOS thì không cần phải thêm `_sprout` ở cuối, nên codename mình chỉ để codename thật của máy thôi.
 
@@ -148,9 +145,9 @@ Có nhé, chạy tốt luôn là đằng khác. Vì đây là 1 con flagship SoC
 | Camera (Back)           | 13 MP, f/2.0, 1/3.1", 1.12µm, PDAF, Laser AF, OIS<br>13 MP B/W, f/2.0, 1.12µm, PDAF  |
 | Camera (Front)          | 13 MP, f/2.0, (wide), 1/3.1", 1.12µm, PDAF         |
 
-Mình sẽ bắt đầu nói từ Android 12. Khi mình bắt đầu bringup cho chiếc Nokia 8, thì rào cản lớn nhất của mình là nhìn cái device tree làm mình vô cùng OCD.
+Mình sẽ bắt đầu nói từ Android 12. Khi mình bắt đầu bringup cho chiếc Nokia 8, thì rào cản lớn nhất của mình là nhìn cái [device tree cũ](https://github.com/PixelExperience-Devices/device_nokia_NB1) của nó làm mình vô cùng OCD.
 
-Cái OCD mà mình nói nằm ở cái [device tree](https://github.com/PixelExperience-Devices/device_nokia_NB1). Và chúng ta sẽ đi phân tích tại sao nó lại tệ đến như thế.
+Và chúng ta sẽ đi phân tích tại sao nó lại trigger chứng OCD của mình.
 
 Thực ra người mang AOSP lên chiếc Nokia 8 này đầu tiên chính là [emufan](https://github.com/raphaelthegreat), cái device tree bên trên cũng là của ông ấy luôn, branch `thirteen` thì ông ấy cherry-pick hết changes của mình qua thôi. Nếu mọi người biết đến project [Citra](https://github.com/citra-emu) và Yuzu (cả 2 đều là Nintendo emulators), thì emufan chắc cũng không còn xa lạ gì nữa. Sau Android 12 thì ông này rời AOSP development cho chiếc Nokia 8, và mình lên làm lead dev :D
 
@@ -165,7 +162,11 @@ Thực ra người mang AOSP lên chiếc Nokia 8 này đầu tiên chính là [
 
 Vậy nên cộng đồng của chiếc Nokia 8 này đã đưa ra solution giải quyết trực tiếp vấn đề đó, chính là reparition (phân vùng lại), và bạn có thể tham khảo tại đây: [T-Virus](https://github.com/resident-nokia/t-virus).
 
-Bản chất thì nó sẽ copy-and-paste 1:1 GPT table của Nokia 8 Sirocco vào Nokia 8, vì chiếc 8 Sirocco ra mắt với Android 8, nghĩa là nó support Treble natively out-of-the-box.
+Để mình giải thích ngắn gọn cách hoạt động của T-Virus nhé:
+- Chiếc 8 Sirocco có Treble (vì launch version của nó là Android 8), và Bootloader của Nokia cho phép nạp GPT table khác vào bằng lệnh `fastboot flash partition:0`. Lấy luôn firmware của con Sirocco, nạp gpt_both0.bin vào - giờ chúng ta đã có phân vùng `vendor`. Đến đây thì có thể tạm thời gọi là có Treble rồi.
+- Nhưng có mỗi cái vendor mà trống trơn thì làm sao mà boot được GSI? Chúng ta có thể dump luôn cái vendor ở trong /system/vendor của con 8 ra và điều chỉnh theo ý muốn cũng như là patch 1 số blobs để cho nó load ở `/vendor` thay vì `/system/vendor` như cũ, sau đó repack thành `vendor.img` - giải quyết xong vấn đề thứ 2. Giờ thì chúng ta đã có full Treble, có thể nạp [GSI](https://developer.android.com/topic/generic-system-image) và boot bình thường như 1 chiếc máy support Treble native.
+
+Và đó là cách mà T-Virus hoạt động. Tạo ra phân vùng `vendor` nhưng phải flash lại toàn bộ firmware, hơi tốn dung lượng nhỉ :D
 
 Đọc đến đây thì bạn đã thấy AOSP trên chiếc Nokia 8 này đang phải repartition để có Treble, nhưng repartition là một điều mà mình vô cùng ghét vì nó tiềm ẩn vô cùng nhiều nguy cơ để biến chiếc điện thoại của bạn thành cục chặn giấy đúng nghĩa. Bạn sẽ hiểu vì sao mình lại ghét nó sau, nhưng giờ thì cứ đọc tiếp đã :P
 
@@ -185,9 +186,10 @@ Kernel 4.4 và 4.9 đã được drop support từ Android 14, nhưng patchset [
 Nói trước để mọi người bớt băn khoăn :D
 
 ## Việc đầu tiên: Bỏ hoàn toàn repartition
+### Overview
 Trước tiên thì chúng ta nên tìm hiểu, repartition là gì?
 
-Repartition là một hình thức để chỉnh sửa phân vùng hệ thống của bạn, để thêm hoặc bớt một phân vùng, hoặc để tăng kích thước của phân vùng nào đó lên.
+Repartition là một hình thức để chỉnh sửa phân vùng hệ thống của bạn so với, để thêm hoặc bớt một phân vùng, hoặc để tăng/giảm kích thước của phân vùng nào đó lên so với partition table ban đầu.
 
 Các thiết bị Android sẽ đi kèm với vô vàn phân vùng mà nhà sản xuất muốn cài đặt. Các phân vùng đó đều được hardcode size trong GPT, tuy nhiên bạn vẫn có thể modify được partition table.
 
@@ -271,7 +273,7 @@ Number  Start   End     Size    File system  Name          Flags
 28      9256MB  63.7GB  54.4GB  ext4         userdata
 ```
 
-**LUN 4:**
+**LUN 4 (LUN này thường chứa các critical partitions để bootloader hoạt động)**
 ```
 Model: SAMSUNG KLUCG4J1ED-B0C1 (scsi)
 Disk /dev/block/sde: 210MB
@@ -319,7 +321,7 @@ Number  Start   End     Size    File system  Name          Flags
 37      179MB   210MB   30.5MB               storsec
 ```
 
-**LUN 5:**
+**LUN 5 (LUN này thường chứa device identifier)**
 ```
 Model: SAMSUNG KLUCG4J1ED-B0C1 (scsi)
 Disk /dev/block/sdf: 33554432B
@@ -341,7 +343,7 @@ Number  Start      End        Size      File system  Name        Flags
 11      32501760B  33419263B  917504B                fsc
 ```
 
-Mình sẽ nói sơ qua về các phân vùng ở trên (cái nào cần thiết mình sẽ nói), giúp bạn hiểu rõ hơn về cấu trúc phân vùng của một chiếc máy dùng SoC của Qualcomm (và một vài phân vùng của FIH, nó khá là tương đồng với Razer Phone - vì đều chung ODM là FIH):
+Mình sẽ nói sơ qua về các phân vùng ở trên (cái nào cần thiết mình sẽ nói), giúp bạn hiểu rõ hơn về cấu trúc phân vùng của một chiếc máy dùng SoC của Qualcomm từ 2017 đổ về (và một vài phân vùng của FIH, nó khá là tương đồng với Razer Phone - vì đều chung ODM là FIH):
 
 | Phân vùng    | Công dụng          |
 |:------------ |:------------------ |
@@ -370,7 +372,7 @@ Mình sẽ nói sơ qua về các phân vùng ở trên (cái nào cần thiết
 | `hwcfg`      | Hardware configurations, phân vùng này của FIH nhưng chỉ tồn tại ở trên các thiết bị Nokia. |   
 | `box`        | Phân vùng này sẽ chứa các log của thiết bị, chẳng hạn như modem crash, hoặc low battery, <br>hoặc modem configurations... |   
 | `logdump`    | Phân vùng này dùng lưu crashdump từ bootloader, phù hợp cho việc bringup thiết bị. Tuy nhiên <br>thường ở production devices thì phân vùng này khá là vô dụng, nên phân vùng này đã được mình <br>sử dụng làm phân vùng metadata rồi, bạn có thể xem change [này](https://github.com/LineageOS/android_device_nokia_msm8998-common/commit/2ade365a0c43f0870ea9e1026e88cdff94dc1629) để hiểu rõ hơn. |   
-| `userdata`   | Phân vùng này chứa dữ liệu người dùng (được mount ở `/sdcard`). Được mã hoá bởi Keymaster. |   
+| `userdata`   | Phân vùng này chứa dữ liệu người dùng (được mount ở `/sdcard` - là cái bộ nhớ trong mà bạn<br> hay thấy trong mấy app File Manager ấy). Được mã hoá bởi Keymaster, và custom recovery <br>cần key và keymaster blobs để giải mã phân vùng này. LineageOS Recovery không support <br>userdata decryption. |   
 
 > Một số thông tin ở bên trên có thể bị sai hoặc thiếu, mọi người có thể contribute thêm!
 
@@ -380,17 +382,18 @@ Cha này đồng hành với mình từ lúc mình còn mới vào làm AOSP dev
 
 ### Quay trở lại về việc tại sao mình lại ghét repartition.
 Đơn giản thôi.
-* Đầu tiên là vì LineageOS không cho phép mình cho người dùng sử dụng [OST LA](https://hmd.fandom.com/wiki/OST_LA) ở trong install guide để nạp T-Virus (thực ra là tên kì quá, không ai muốn cho dùng), và 1 phần OST LA mà 1 tool nội bộ của FIH, nên up lên đó khả năng dễ bị DMCA lắm :D
-* Tiếp theo, bootloader của chiếc Nokia này thực sự rất tệ (FIH quality™), chẳng hạn khi khởi động mà một trong 3 phân vùng (`boot/system`) hoặc `vendor` (nếu có) mà trống không, nó sẽ lập tức fallback về download mode (hay còn gọi là bootloader mode trên các thiết bị Qualcomm khác) và chỉ boot bình thường trở lại khi bạn nạp lại stock firmware (phần mềm gốc đi kèm theo máy) hoặc 1 bản backup nào đó có chứa full phân vùng hệ thống.
+* Đầu tiên là vì LineageOS không cho phép mình cho người dùng sử dụng [OST LA](https://hmd.fandom.com/wiki/OST_LA) ở trong install guide để nạp T-Virus (thực ra là tên kì quá, không ai muốn cho dùng), và 1 phần OST LA mà 1 tool nội bộ của FIH, nên up lên đó khả năng dễ bịđánh copyright lắm :D
+* Tiếp theo, bootloader của chiếc Nokia này thực sự rất tệ (FIH quality™), chẳng hạn khi khởi động mà một trong 3 phân vùng (`boot/system`) hoặc `vendor` (nếu có) mà trống không, thì bootloader sẽ lập tức fallback về download mode (hay còn gọi là bootloader mode trên các thiết bị Qualcomm khác) và chỉ boot bình thường trở lại khi bạn nạp lại stock firmware (phần mềm gốc đi kèm theo máy) hoặc 1 bản backup nào đó có chứa full phân vùng hệ thống.
 * LineageOS recovery và TWRP sử dụng mount point khác nhau, nên việc viết script repartition trở nên khó khăn hơn rất nhiều.
 * Xác suất bị lỗi thấp nhưng vẫn có xác suất bị lỗi trong quá trình chạy script repartition.
 * Cuối cùng, là phân vùng `system_a/b` của con này có tận 3.7GB, nhét cái ROM không thôi vẫn còn thừa nhiều dung lượng để cài Google Apps nên mình không muốn repartition làm gì cả cho mệt người.
 
-Tóm gọn lại là: không muốn, không thích, không cần và lười.
+Nếu bạn tự hỏi nếu `userdata` nằm ở cuối thì tại sao không erase nó đi rồi add lần lượt `vendor_a` và `vendor_b` rồi add `userdata` vào cuối, thì mình đã thử làm 1 script sử dụng `sgdisk` để repartition trong recovery và `dd` tạm content của phân vùng `boot` vào `vendor` sau khi repartition để tránh việc cái máy này nhảy vào download mode do phân vùng `vendor` bị trống và sau khi reboot để refresh GPT table thì một số lần chiếc máy vẫn nhảy vào download mode và mình lại phải nạp lại firmware để fix (10 lần chạy repartition script thì nó chạy thành công cả 10 lần, nhưng trong 10 lần đó thì 3 lần sau khi reboot nó nhảy vào download mode). Vậy là vẫn có rủi ro.
 
-Và mình không muốn nghe ai than phiền trong LineageOS GitLab về việc nạp xong repartition thì màn đen thui (cái này bạn search trên mấy cái group Telegram của mấy con Pixel 1/2 là ra) cho nên là mình đã quyết định không repartition nữa :D
+Tóm gọn lại là: mình không muốn, không thích, thấy nó không cần thiết và lười nghĩ ra solution cho thứ không cần thiết. Mục đích mình bỏ repartition đi là để cho người dùng có thể cài đặt bản ROM 1 cách dễ dàng nhất.
 
-Nếu bạn đã đọc hết phần trên, thì xin chúc mừng. Mới chỉ là phần đầu thôi.
+Và mình không muốn nghe ai than phiền trong LineageOS GitLab về việc nạp xong repartition thì cái máy nó thành chặn giấy luôn (cái này bạn search trên mấy cái group Telegram của mấy con Pixel 1/2 là ra, do kích thước phân vùng của chúng nó thực sự nhỏ nên mới thực sự cần repartition) cho nên là mình đã quyết định không repartition nữa. Tốt nhất là cái gì không hỏng thì tốt nhất là không nên sửa :D
+
 Từ các thông tin bạn vừa đọc bên trên, thì đây là [fstab](https://github.com/nokia-msm8998/android_device_nokia_NB1/blob/lineage-22.1/init/fstab.qcom) của chiếc Nokia 8 này sau khi không còn ship bất kì repartition solution nào nữa:
 
 ```
@@ -469,17 +472,18 @@ Guard này sẽ bỏ string `lineage_` trong `TARGET_PRODUCT`, mà thường `TA
 Xong việc đầu tiên rồi hehe, giờ thì chúng ta có thể build cho các target khác nhau mà không phải lo việc bị báo lỗi duplicated modules nữa :D
 
 ## Việc thứ hai: Bỏ custom display HAL
+### Overview
 Để tìm hiểu thêm về HAL (Hardware Abstraction Layer), tham khảo tại [đây](https://source.android.com/docs/core/architecture/hal).
 
 **TL;DR:** HAL được sử dụng để giao tiếp giữa software và hardware.
 
 Nếu bạn vẫn còn đang mở tab mà mình nhắc mình nói cái device tree đó đã làm mình OCD đến mức nào, thì đây sẽ là lí do thứ 2 trigger chứng OCD của mình.
 
-Bạn có thấy thư mục [qcom-caf](https://github.com/PixelExperience-Devices/device_nokia_NB1/tree/thirteen/qcom-caf) không? Thông thường thì build system của LineageOS sẽ pickup HAL ở trong `hardware/qcom-caf/<platform>` theo flag `TARGET_BOARD_PLATFORM := <platform>` và kernel version nhưng cái này thì lại pickup display HAL ở trong device tree.
+Bạn có thấy thư mục [qcom-caf](https://github.com/PixelExperience-Devices/device_nokia_NB1/tree/thirteen/qcom-caf) không? Thông thường thì build system của LineageOS sẽ pickup HAL ở trong `hardware/qcom-caf/<platform>` theo flag `TARGET_BOARD_PLATFORM := <platform>` và `TARGET_KERNEL_VERSION = <VERSION>.<PATCHLEVEL>` nhưng cái này thì lại pickup display HAL ở trong device tree, lí do vì sao nó phải dùng thì bạn hãy cố gắng tiêu hoá đống kiến thức bên dưới nhé :D
 
 Để display stack hoạt động trên một thiết bị Qualcomm, thì CLO tag của Adreno stack phải trùng với cả major version của CLO tag của HAL. Hoặc cái tag của Display HAL phải mới hơn blobs Adreno của bạn đang có, blobs chênh nhau độ ~2 Android versions thì vẫn hoạt động ngon nghẻ nhé :D
 
-Ví dụ đơn giản thôi: BSP tag của chiếc Nokia 7.2 ở Android 11 là `LA.UM.9.2.r1-03500-SDMxx0.0`. Nếu muốn display stack hoạt động, thì HAL của bạn phải có tag `LA.UM.9.2.xx-0xxxx-SDMxx0.0` - tag này sẽ đảm bảo rằng display stack sẽ hoạt động với tag hiện tại và các driver Adreno cũ hơn, chẳng hạn như HAL có tag `LA.UM.9.2.xx-0xxxx-SDMxx0.0` thì sẽ ăn nhập được với Adreno đến từ BSP tag `LA.UM.8.2.xx-0xxxx-SDMxx0.0`.
+Ví dụ đơn giản thôi: BSP tag của Adreno trên chiếc Nokia 7.2 ở Android 11 là `LA.UM.9.2.r1-03500-SDMxx0.0`. Nếu muốn display stack hoạt động, thì HAL của bạn phải có tag `LA.UM.9.2.xx-0xxxx-SDMxx0.0` - tag này sẽ đảm bảo rằng display stack sẽ hoạt động với tag hiện tại và các driver Adreno cũ hơn, chẳng hạn như HAL có tag `LA.UM.9.2.xx-0xxxx-SDMxx0.0` thì sẽ ăn nhập được với Adreno đến từ BSP tag `LA.UM.8.2.xx-0xxxx-SDMxx0.0`.
 
 Trừ khi cũ quá thì không được nhé :D
 
@@ -532,13 +536,13 @@ Như đã nói ở trên, SDM660 và MSM8998 là hai con SoC có sự tương đ
 Mình sẽ giải thích thêm về cách mà các HAL của Qualcomm hoạt động như thế nào ở trong tương lai gần sau, ở post này thì cứ ngắn gọn nhất có thể đã.
 
 ### Quay lại với vấn đề chính
-Các thiết bị sử dụng SDM660 với kernel 4.4 ở trên LineageOS vẫn còn đang dùng HAL của msm8998.
+Các thiết bị sử dụng SDM660 với kernel 4.4 ở trên LineageOS vẫn còn đang dùng HAL của msm8998 (vì display HAL của SDM660 trong Lineage chỉ dùng được trên kernel 4.19 thôi, và Qualcomm đã port 4.19 lên sdm660 từ lâu rồi).
 
 Bạn có thể check commit history tại [đây](https://github.com/LineageOS/android_hardware_qcom_display/commits/lineage-22.1-caf-msm8998/). Bản chất HAL vẫn còn đang ở tag `LA.UM.8.4.r1-04700-8x98.0`, đây là 1 tag của Android Q và đã outdated từ rất lâu rồi (nhưng nó vẫn dùng được). Bản chất là không ai muốn tốn công tốn sức resolve đống merge conflicts của `LA.UM.9.2.r1-03500-SDMxx0.0` vào một cái HAL mà chỉ có 3 thiết bị dùng thì nó không đáng tí nào cả.
 
 Đến đây thì mình downgrade full Adreno stack và xoá luôn thư mục `qcom-caf` ở trong device tree đi, tiện xoá luôn flag `USE_DEVICE_SPECIFIC_DISPLAY` trong BoardConfig, tiện thì mình sẽ downgrade luôn Adreno stack xuống của `A1N_sprout` (Nokia 8 Sirocco), Android 10 release.
 
-Thực ra thì mình có nhiều lựa chọn để downgrade, chẳng hạn như là chiếc Essential Phone PH-1 (`mata`) cũng có Q update, hoặc chiếc OnePlus 5/5T (`dumpling/cheeseburger`) cũng có Q update. Vì chung SoC nên có thể sử dụng của chúng nó được, và blobs của những OEM này thường sẽ rất gần với BSP của Qualcomm mà không có thêm OEM additions như LG hoặc Sony, nên mình có thể dùng của chúng nó thoải mái mà không phải lo phát sinh vấn đề về sau.
+Thực ra thì mình có nhiều lựa chọn để downgrade, chẳng hạn như là chiếc Essential Phone PH-1 (`mata`) cũng có Q update, hoặc chiếc OnePlus 5/5T (`dumpling/cheeseburger`) cũng có Q update. Vì chung SoC nên có thể sử dụng của chúng nó được, và blobs của những OEM này thường sẽ rất gần với BSP của Qualcomm mà không có thêm OEM additions trong Adreno blobs như LG hoặc Sony, nên mình có thể dùng của chúng nó thoải mái mà không phải lo phát sinh vấn đề về sau.
 
 Bạn có thể xem thêm ở commit [này](https://github.com/nokia-msm8998/android_device_nokia_msm8998-common/commit/1a23020a14ba63f0efb39f78e34e09ca9ca94936).
 
@@ -559,6 +563,21 @@ Sau hai changes đơn giản đó thì việc submit port của thiết bị và
 
 Thực ra thì sau 2 năm ở LineageOS, mình cũng khôn hơn nhiều so với trước :D
 
+### Bonus
+Nếu mọi người tò mò về việc dùng HAL cũ trên blobs Adreno mới thì, trông nó sẽ như thế này =))))))
+
+![alt text](../assets/Nokia/grallocdied.png)
+
+SDM sẽ ngỏm, mà SDM ngỏm thì HWC (hwcomposer) cũng sẽ ngỏm luôn. Từ đó thì RIP display output và nó sẽ chỉ kẹt hoài ở splash screen nhưng thực ra đã boot vào hệ thống rồi =))))))
+
+SDM/HWC (hwcomposer) sẽ spam trong logcat:
+```
+01-01 08:10:57.613   685   685 E SDM     : CompManager::Prepare: Composition strategies exhausted for display = 0
+01-01 08:10:57.613   685   685 E SDM     : HWCDisplay::PrepareLayerStack: Prepare failed. Error = 2
+01-01 08:10:53.312   683   683 E HWComposer: getDeviceCompositionChanges: presentOrValidate failed for display 0: BadDisplay (2)
+01-01 08:10:53.312   683   683 E CompositionEngine: chooseCompositionStrategy failed for Primary display: -2147483648 (Unknown error -2147483648)
+```
+
 ## Việc thứ ba: Fix WLAN tethering
 Trước khi đọc phần này, bạn cần hiểu [HIDL](https://source.android.com/docs/core/architecture/hidl) và [AIDL](https://source.android.com/docs/core/architecture/aidl/aidl-hals) HAL là gì.
 
@@ -576,7 +595,7 @@ servicemanager: Since 'android.hardware.wifi.supplicant.ISupplicant/default' cou
 
 ![alt text](../assets/Nokia/wlan.png)
 
-Trace `dmesg` lúc bootup, chúng ta thấy kernel fail và không open được `wlan1`:
+Trace `dmesg` lúc bootup, chúng ta thấy kernel không `ioctl` (open) được `wlan1`:
 ```
 07-18 16:59:46.533  1032  1032 I netd    : interfaceSetCfg(InterfaceConfigurationParcel{ifName: wlan1, hwAddr: , ipv4Addr: 0.0.0.0, prefixLength: 0, flags: []}) -> ServiceSpecificException(19, "[No such device] : ioctl() failed") <0.15ms>
 ```
@@ -588,9 +607,10 @@ Hoặc check logcat ta thấy được:
 
 Thực ra thì mình cũng đã strace `hostapd` service nhưng cũng chả có gì bất thường lắm.
 
-Để mình giải thích thêm: Nếu bạn bật Wi-Fi và kết nối đến một AP nào đó, thì kernel sẽ tạo ra node `/dev/wlan0`. Nhưng nếu bạn muốn phát Wi-Fi mà vẫn sử dụng Wi-Fi trên thiết bị của mình (cụ thể là concurrent STA mode), thì bạn cần 1 interface WLAN nữa để bật hotspot song song với WLAN -> từ đó bạn có thể vừa dùng WLAN trên thiết bị của mình, vừa phát cho người khác sử dụng.
+Để mình giải thích thêm: Nếu bạn bật Wi-Fi, thì kernel sẽ tạo ra node `/dev/wlan0` (còn sau đó bạn kết nối WLAN thì hệ thống sẽ write vào cái node đấy thôi). Nhưng nếu bạn muốn phát Wi-Fi mà vẫn sử dụng Wi-Fi trên thiết bị của mình (cụ thể là concurrent STA mode), thì bạn cần 1 interface WLAN nữa để bật hotspot song song với WLAN -> từ đó bạn có thể vừa dùng WLAN trên thiết bị của mình, vừa phát cho người khác sử dụng.
 
 Và bằng 1 cách thần kì nào đó `wlan1` lại báo không thể add interface và mình không thể bật được hotspot lên sau QPR2 merge.
+
 Mình không còn giữ ảnh nữa, nhưng mà 1 [người bạn](https://github.com/Niemandausduisburg) nữa bên Đức cũng cùng mình dev chiếc Nokia này nên mình vẫn có bức ảnh lúc nó báo fail và tắt luôn các WLAN interfaces + báo fail nên không thể bật hotspot lên được.
 
 ![alt text](../assets/Nokia/hotspot_fail.png)
@@ -600,7 +620,7 @@ Thật may là cái gì cũng có cách fix, còn cách fix có trông oách xà
 ### Addressing the issue
 Thực ra là mình đã chuẩn bị từ bỏ việc fix hotspot và chuẩn bị drop support cho chiếc Nokia này trong khoảng thời gian đó, nhưng trong lúc đó khi ông bạn dev cùng kia đã thử mọi thứ để có thể fix WLAN tethering.
 
-Bọn mình đã thử ngó qua [WLAN configs](https://github.com/nokia-msm8998/android_device_nokia_msm8998-common/tree/lineage-22.1/configs) và thậm chí đã bring back cái HIDL legacy WLAN HAL quay trở lại, nhưng vẫn không bật được Hotspot lên.
+Bọn mình đã thử ngó qua [WLAN configs](https://github.com/nokia-msm8998/android_device_nokia_msm8998-common/tree/lineage-22.1/configs) và thậm chí đã bring back cả HIDL Wi-Fi HAL, nhưng vẫn không bật được Hotspot lên.
 
 Chúng mình đã thử vài tag [fw-api](https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/wlan/fw-api), [qca-wifi-host-cmn](https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/wlan/qca-wifi-host-cmn) và [qcacld-3.0](https://git.codelinaro.org/clo/la/platform/vendor/qcom-opensource/wlan/qcacld-3.0) - đây đều là những wireless driver của Qualcomm SoC, trừ khi OEM bạn dùng chip WLAN khác thì driver có thể khác thôi, ví dụ như chiếc LG V20 sử dụng Bluetooth/WLAN module của Broadcom nên họ không dùng qcacld.
 
@@ -612,7 +632,7 @@ Bạn có thể check thêm ở repo [này](https://github.com/LineageOS/android
 
 ![alt text](../assets/Nokia/q_qcacld.png)
 
-Nếu bạn có làm trong scene Homebrew của Nintendo 3DS, thì chắc bạn có thể sẽ biết đến [lifehackerhansol](https://github.com/lifehackerhansol). Cha này là người đã [hồi sinh](https://www.phonearena.com/news/the-lg-v30-lives-again-through-official-lineage-os-support_id145953) chiếc LG V30 tại LineageOS sau khi nó đã bị drop sau thời CyanogenMod 14.1. Sau này thì mình có dịp được bringup [lge-sdm845](https://github.com/lge-sdm845) (mình bringup chiếc LG V40 ThinQ) và [lge-sm8150](https://github.com/lge-qcom-dev) (mình bringup LG G8 bản Mỹ - codename `alphalm`) thì mình có được bringup cùng với đại ca này. Đại ca này có đủ full gần như mọi con smartphone của LG trên cái Trái Đất này luôn, không thiếu con nào.
+Nếu bạn có làm trong scene Homebrew của Nintendo 3DS, thì chắc bạn có thể sẽ biết đến [lifehackerhansol](https://github.com/lifehackerhansol). Cha này là người đã [hồi sinh](https://www.phonearena.com/news/the-lg-v30-lives-again-through-official-lineage-os-support_id145953) chiếc LG V30 tại LineageOS sau khi nó đã bị drop sau thời CyanogenMod 14.1. Sau này thì mình có dịp được bringup [lge-sdm845](https://github.com/lge-sdm845) (mình bringup chiếc LG V40 ThinQ - `judypn`) và [lge-sm8150](https://github.com/lge-qcom-dev) (mình bringup LG G8 bản Mỹ - codename `alphalm`) thì mình có được bringup cùng với đại ca này. Đại ca này có đủ full gần như mọi con smartphone của LG trên cái Trái Đất này luôn, không thiếu con nào.
 
 Hiện tại mình đang bringup [lge-sm7250](https://github.com/lge-sm7250) (LG Velvet, Wing) với sếp này, và [sony-sm8450](https://github.com/sony-nagara) nữa.
 
@@ -679,13 +699,12 @@ Hoặc library không thể tìm thấy symbol:
 09-14 20:12:22.237  2587  2587 E ims_media_jni: Error loading library lib-imsvt.so: dlopen failed: cannot locate symbol "getMetaData" referenced by "/system/system_ext/lib64/lib-imsvideocodec.so"...
 ```
 
-ELF check được sinh ra để giải quyết toàn bộ việc đó. Nó sẽ quét hết tất cả các missing symbol trong 1 file ELF và check xem dependencies nào cần thiết để library đó hoạt động và build target đó trong lúc check ELF luôn. Hoặc check soname xem có trùng với cả tên library không.
+ELF check được sinh ra để giải quyết toàn bộ việc đó. Nó sẽ quét hết tất cả các symbol trong 1 file ELF có tồn tại không và check xem dependencies nào cần thiết để library đó hoạt động và build target đó trong lúc check ELF luôn. Hoặc check soname xem có trùng với cả tên library không.
 
-
-Nói qua dạng văn bản thì chắc mọi người không hiểu, để mình ví dụ luôn cho mọi người dễ hiểu nhé:
+Nói qua dạng văn bản thì chắc mọi người không hiểu, để mình ví dụ luôn cho mọi người dễ hiểu nhé.
 
 ### Giải quyết các ELF check fail vì không tìm thấy dependencies, hoặc target không tồn tại ở Blueprint format
-Chúng ta lấy ví dụ bằng cách cho 1 ELF có filename là `vendor.qti.gnss@4.0-service.so`, nằm trong `/vendor/lib64`.
+Lấy ví dụ luôn, cho 1 ELF có filename là `vendor.qti.gnss@4.0-service.so`, nằm trong `/vendor/lib64`.
 
 Nếu mọi người readelf nó ra, thì mọi người sẽ thấy được các shared libraries cần thiết để ELF này hoạt động bình thường:
 
@@ -767,9 +786,9 @@ cc_prebuilt_library_shared {
 }
 ```
 
-Nói nôm na là vậy, giờ chúng ta sẽ nói qua về các lỗi mình đã gặp trong lúc chạy bật ELF check ở nokia-msm8998.
+Nói nôm na là vậy, giờ chúng ta sẽ nói qua về các lỗi mình đã gặp trong lúc bật ELF check ở nokia-msm8998.
 
-Đầu tiên là các blobs SDM của Adreno, chúng depends on `libsdmutils` nhưng target này lại được define [ở dạng Makefile](https://github.com/LineageOS/android_hardware_qcom_display/blob/lineage-21.0-caf-msm8998/sdm/libs/utils/Android.mk) trong display HAL, hoặc `libsdedrm` thì depends vào `libdrmutils`, cũng là 1 [target Makefile](https://github.com/LineageOS/android_hardware_qcom_display/blob/lineage-21.0-caf-msm8998/libdrmutils/Android.mk) - mà ELF check chỉ có thể pick up các dependencies dưới dạng blueprint thôi.
+Đầu tiên là các blobs SDM của Adreno, chúng dựa vào `libsdmutils` nhưng target này lại được define [ở dạng Makefile](https://github.com/LineageOS/android_hardware_qcom_display/blob/lineage-21.0-caf-msm8998/sdm/libs/utils/Android.mk) trong display HAL, hoặc `libsdedrm` thì depends vào `libdrmutils`, cũng là 1 [target Makefile](https://github.com/LineageOS/android_hardware_qcom_display/blob/lineage-21.0-caf-msm8998/libdrmutils/Android.mk) - mà ELF check chỉ có thể pick up các dependencies dưới dạng blueprint thôi.
 
 Tạm thời mình sẽ [disable ELF check](https://github.com/nokia-msm8998/android_device_nokia_msm8998-common/commit/8559934b8616f0ecfc8e066b7f4461ce3086dcca) cho bọn này, đợi bao giờ 2 target kia qua blueprint rồi thì mình bật lại sau.
 
@@ -823,7 +842,7 @@ out/soong/.intermediates/vendor/nokia/A1N/libvendor.goodix.hardware.fingerprinte
 Nhìn vào build log, bạn có thể thấy được symbol `_ZN7android8hardware7details17gBsConstructorMapE` không thể resolve được. Nhưng nếu bạn đã từng bringup Android 10 hoặc 11, thì đây là symbol của 1 target VNDK, cụ thể ở đây là `libhidlbase-v32`.
 Và cụ thể hơn nữa một symbol [VNDK](https://source.android.com/docs/core/architecture/vndk) mà thiếu thì cái library đó chắc chắn không thể hoạt động được.
 
-Cụ thể là nếu bạn search symbol này ở trên GitHub search, sẽ thấy rất nhiều commit workaround cho vấn đề của chúng ta. Chẳng hạn như ở [đây](https://github.com/ProjectElixir-Devices/device_google_taimen/commit/978392e5d02d3002249951557fb1103ec3306129).
+Nếu bạn search symbol này ở trên GitHub search, sẽ thấy rất nhiều commit workaround cho vấn đề của chúng ta. Chẳng hạn như ở [đây](https://github.com/ProjectElixir-Devices/device_google_taimen/commit/978392e5d02d3002249951557fb1103ec3306129).
 
 ```
 From 978392e5d02d3002249951557fb1103ec3306129 Mon Sep 17 00:00:00 2001
@@ -904,13 +923,13 @@ Rebuild lại và cuối cùng thì build system cũng không còn than về vi�
 Trên chiếc Nokia 8 này thì mình chỉ phải resolve 1 vài missing symbol như `__android_log_print` (dùng để print log ra logcat), đã nằm trong `liblog` và có thể build từ source ra. Bạn có thể check thêm tại [đây](https://github.com/nokia-msm8998/android_device_nokia_NB1/commits/lineage-22.1/proprietary-files.txt).
 
 Tóm gọn lại, bạn có thể resolve các missing symbol trong ELF check nếu:
-- Bạn biết cách shim các ELF (nhưng nó phải chạy, chứ viết dummy shim thì tỉ lệ hẹo cao lắm). Mình sẽ nói rõ hơn về shim trong ELF rõ hơn ở một bài post khác.
+- Bạn biết cách shim các ELF (nhưng nó phải chạy, chứ viết dummy shim thì tỉ lệ hẹo cao lắm). Mình sẽ nói rõ hơn về shim trong ELF ở một bài post khác.
 - Tìm các prebuilt library, hoặc một dependencies nào đó có thể build từ source mà có chứa symbol bạn cần đến.
 
 ### Non-resolvable symbols ELF check
 Cái này thì khoai hơn, vì thường các non-resolvable symbol thì toàn là các intrinsics symbol (kiểu symbol từ compiler add vào), và ở trên những compiler mới hơn thì các symbol đấy đều không thể resolve được (cụ thể hơn là có thể fix được, nhưng shim sẽ rất khó).
 
-Chẳng hạn luôn, camera stack của chiếc Nokia 8 này có rất nhiều các libraries từ thời Napoleon, nên khi build thì build system cũng làm mình phải ngồi vò đầu bứt tai rebuild mấy chục lần để pass full đống check đấy, tức voãi :D
+Chẳng hạn luôn, camera stack của chiếc Nokia 8 này có rất nhiều libraries từ thời Napoleon, nên khi build thì build system cũng làm mình phải ngồi vò đầu bứt tai rebuild mấy chục lần để pass full đống check đấy, tức voãi :D
 
 ```
 [ 44% 46569/105615] Check prebuilt ELF binary: out/soong/.intermediates/vendor/nokia/NB1/libmmcamera2_mct/android_vendor_arm_armv8-a_shared/libmmcamera2_mct.so
@@ -958,7 +977,7 @@ vendor/etc/sensors/hals.conf
 vendor/etc/sensors/sensor_def_qcomdev.conf
 ```
 
-Nếu cho bạn một chiếc điện thoại mà nó không thể xoay ngang màn hình, bạn không điều chỉnh auto brightness được, hay bạn áp nó vào tai khi đang nghe điện thoại, liệu bạn có chấp nhận được không? Mình thì không :D
+Nếu cho bạn một chiếc điện thoại mà nó không thể xoay ngang màn hình, bạn không điều chỉnh auto brightness được, hay bạn áp nó vào tai khi đang nghe điện thoại mà nó không tắt màn hình, liệu bạn có chấp nhận được không? Mình thì không :D
 
 ### Closer look
 Mở Device Info HW lên, bạn sẽ thấy app report 0 sensors available:
@@ -1123,6 +1142,35 @@ index 44fa99fa1c5d..832482a46b5a 100644
  			compatible = "removed-dma-pool";
 ```
 
+Update fstab luôn cho RDP:
+```
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+# A/B fstab.qcom variant
+#<src>                                   <mnt_point>        <type> <mnt_flags and options>                             <fs_mgr_flags>
+system                                   /system               ext4   ro,barrier=1,discard                             wait,slotselect,logical,first_stage_mount
+vendor                                   /vendor               ext4   ro,barrier=1,discard                             wait,slotselect,logical,first_stage_mount
+system_ext                               /system_ext           ext4   ro,barrier=1,discard                             wait,slotselect,logical,first_stage_mount
+product                                  /product              ext4   ro,barrier=1,discard                             wait,slotselect,logical,first_stage_mount
+odm                                      /odm                  ext4   ro,barrier=1,discard                             wait,slotselect,logical,first_stage_mount
+/dev/block/by-name/logdump               /metadata             ext4   nosuid,nodev,noatime,discard                     wait,check,formattable,first_stage_mount
+/dev/block/bootdevice/by-name/userdata   /data                 ext4   noatime,nosuid,nodev,barrier=1,noauto_da_alloc,discard,lazytime,errors=panic   wait,check,latemount,formattable,fileencryption=ice,quota,reservedsize=128M
+/dev/block/bootdevice/by-name/misc       /misc                 emmc   defaults                                         defaults
+/dev/block/bootdevice/by-name/modem      /vendor/firmware_mnt  vfat   ro,shortname=lower,uid=0,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0 wait,slotselect
+/dev/block/bootdevice/by-name/bluetooth  /vendor/bt_firmware   vfat   ro,shortname=lower,uid=1002,gid=3002,dmask=227,fmask=337,context=u:object_r:bt_firmware_file:s0 wait,slotselect
+/dev/block/bootdevice/by-name/dsp        /vendor/dsp           ext4   ro,nosuid,nodev,barrier=1                        wait,slotselect
+/dev/block/bootdevice/by-name/persist    /mnt/vendor/persist   ext4   noatime,nosuid,nodev,barrier=1                   wait
+
+# Removeable
+/devices/soc/c084000.sdhci/mmc_host*     auto               auto   defaults                                         wait,voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/*/xhci-hcd.0.auto*              auto               auto   defaults                                         voldmanaged=usb:auto
+
+# ZRAM
+/dev/block/zram0                         none        swap   defaults    zramsize=50%,max_comp_streams=8
+```
+
 Giờ có vẻ ổn rồi đấy, đến giờ rebuild rồi :D
 
 Sau khi rebuild xong, chúng ta sẽ cần update recovery vì recovery cũ không hỗ trợ nạp OTA có chứa RDP. Nạp recovery mới và flash `super_empty` để tạo liên kết giữa 2 phân vùng này ở `fastbootd` sẽ giúp chúng ta có thể cài đặt OTA.
@@ -1131,28 +1179,32 @@ Sau khi cài đặt xong, chúng ta reboot thì sensors stack đã hoạt độn
 
 ![alt text](../assets/Nokia/sensors_final.jpg)
 
-Vậy là suy đoán của mình đã đúng. Do Android 15 có thay đổi gì đó trong source code (có thể là họ drop support cho các thiết bị non-Treble) và chuyển sang Treble đã giải quyết được thành công vấn đề. Giờ thì bug list của mình đã thành fixed hết, và như là không còn gì để fix nữa, đợi Google release 15 QPR2 rồi fix tiếp lỗi của 15 QPR2 :D
+Vậy là suy đoán của mình đã đúng. Do Android 15 có thay đổi gì đó trong source code (có thể là họ drop support cho các thiết bị non-Treble, nên phân vùng `vendor` là thiết yếu trong Android 15) và chuyển sang Treble đã giải quyết được thành công vấn đề. Giờ thì bug list của mình đã thành fixed hết, và gần như là không còn gì để fix nữa, đợi Google release 15 QPR2 rồi fix tiếp lỗi của 15 QPR2 :D
 
 ![alt text](../assets/Nokia/excel.png)
 
->Phần Sensors mình để N nhưng mình lười quá không muốn sửa =)))) Và cái call echo on loudspeakers thì mình đã fix rồi.
-
 ### Một vài screenshot khác của LineageOS 22.1 trên chiếc Nokia 8:
 
-Đây là unofficial build và được sử dụng với mục đích testing. Hiện tại các changes đã được mình merge vào các repo tương ứng trên LineageOS Gerrit - bạn có thể check tại topic [này](https://review.lineageos.org/q/topic:%22lineage-22.1-nokia-msm8998%22), nhưng mà mình cần phải hoàn tất cái guide upgrade từ LineageOS 21 lên 22.1 cho nó đã, vì LineageOS 21 là non-RDP =)))))))
+Đây là unofficial build và chỉ được sử dụng với mục đích testing. Hiện tại các changes đã được mình merge vào các repo tương ứng trên LineageOS Gerrit - bạn có thể check tại topic [này](https://review.lineageos.org/q/topic:%22lineage-22.1-nokia-msm8998%22), nhưng mà mình cần phải hoàn tất cái guide upgrade từ LineageOS 21 lên 22.1 cho nó đã, vì LineageOS 21 là non-RDP =)))))))
 
-![alt text](../assets/Nokia/1.png)
-![alt text](../assets/Nokia/2.png)
-![alt text](../assets/Nokia/3.png)
-![alt text](../assets/Nokia/4.png)
-![alt text](../assets/Nokia/5.png)
+| | | |
+|-|-|-|
+|![alt text](../assets/Nokia/1.png) |![alt text](../assets/Nokia/2.png) |![alt text](../assets/Nokia/3.png)|
+
+| | | |
+|-|-|-|
+![alt text](../assets/Nokia/4.png)|![alt text](../assets/Nokia/5.png)|![alt text](../assets/Nokia/6.png)|
+
+| | | | |
+|-|-|-|-|
+|![alt text](../assets/Nokia/7.png)|![alt text](../assets/Nokia/8.png)|![alt text](../assets/Nokia/9.png)|![alt text](../assets/Nokia/10.png)|
 
 ## Kết thúc
 Sau khi vật lộn với con máy này để đem lại sự sống cho nó trong vài năm vừa qua, thì mình thấy mình vẫn còn sức để chuẩn bị fix những lỗi mà Google chuẩn bị mang tới cho các thiết bị legacy =))))))))
 
 Chiếc máy này sau 8 năm chạy vẫn mượt tốt ở Android 15, thậm chí tốt hơn mấy chiếc Redmi Note (trừ Redmi Note 12 đổ đi nhé), vì Android qua những năm qua không có thay đổi quá nhiều về mặt giao diện, nên GPU con này vẫn còn gánh tốt những tác vụ lướt web cơ bản, sử dụng social media hoặc đơn giản là chỉ để nghe nhạc thôi (mình có 1 patch trong audio policy configurations của con này để force con này resample ra 32-bit audio output, nghe một trời một vực phết) và một số tựa game, chẳng hạn như bạn vẫn có thể chạy PUBG ở 60fps, hoặc Genshin Impact ở 30fps (dĩ nhiên là all low). Chiếc Adreno 540 trên con này thực sự là chưa cùi đâu :D
 
-Google rất tích cực trong việc drop support cho các thiết bị legacy những năm gần đây. Cụ thể là việc mỗi năm hoặc mỗi QPR họ sẽ drop cái support cho một kernel LTS nào đấy trong ACK, khiến cho việc boot các phiên bản Android cao hơn ở trên những thiết bị dùng kernel cũ trở nên khó khăn hơn rất nhiều.
+Google rất tích cực trong việc drop support cho các thiết bị legacy những năm gần đây. Cụ thể là việc mỗi năm hoặc mỗi QPR họ sẽ drop cái support cho một kernel LTS nào đấy trong [ACK](https://source.android.com/docs/core/architecture/kernel/android-common), khiến cho việc boot các phiên bản Android cao hơn ở trên những thiết bị dùng kernel cũ trở nên khó khăn hơn rất nhiều.
 
 Nhưng mà, chừng nào cái kernel 4.4 này vẫn còn có thể backport được thêm tính năng từ trên các kernel mới xuống để boot các phiên bản Android cao hơn, thì mình sẵn sàng chiến tay đôi với Google để cho con nhỏ này boot Android 17 và 18, thậm chí là 20 luôn :D
 
